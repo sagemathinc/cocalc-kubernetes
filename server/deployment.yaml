@@ -21,7 +21,7 @@ spec:
         run:  "cocalc-server"
     spec:
       containers:
-      - image: "cocalc-kubernetes-server:latest"
+      - image: "sagemathinc/cocalc-kubernetes-server:latest"
         name: "cocalc-server"
         ports:
         - containerPort: 80
