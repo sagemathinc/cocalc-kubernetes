@@ -1,0 +1,28 @@
+ChallengeResponseAuthentication no
+UsePAM no
+X11Forwarding yes
+PrintMotd no
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# this isn't a security risk, because sshd already runs inside the project container
+# the ssh proxy prior to this needs to have a tighter security ...
+PermitUserEnvironment yes
+
+# override default of no subsystems
+Subsystem	sftp	/usr/lib/openssh/sftp-server
+
+# Google Compute Engine times out connections after 10 minutes of inactivity.
+# Keep alive ssh connections by sending a packet every 2 minutes.
+ClientAliveInterval 120
+UseDNS no
+
+# Allow user to use ssh-agent forwarding (see https://github.com/sagemathinc/cocalc/issues/2340)
+AllowAgentForwarding yes
+
+# We take this list from the defaults as claimed in "man sshd_config"
+# We DON'T use arcfour, because it is removed in newer openssl versions.
+# Rather, aes192 based ones are hardware accelerated and work even faster.
+# https://github.com/sagemathinc/kucalc/issues/42
+# disabled for now, though ...
+#Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com
