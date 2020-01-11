@@ -24,11 +24,6 @@ RUN \
   && apt-get install -y nodejs \
   && npm install coffeescript -g
 
-# Routine build updates will starts here (or above), since RANDOM will be set to
-# something random (by our build script).
-# TODO -- re-enable when stable
-# ARG RANDOM=
-
 # Commit to checkout and build.
 ARG commit=HEAD
 
