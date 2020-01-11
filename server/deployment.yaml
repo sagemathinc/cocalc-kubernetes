@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 2
+  labels:
+    run: "{NAME}"
+  name: "{NAME}"
+spec:
+  replicas: 1
+  minReadySeconds: 30
+  selector:
+    matchLabels:
+      run: "{NAME}"
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        run:  "{NAME}"
+    spec:
+      containers:
+      - image: "{REGISTRY}/cocalc-kubernetes-server:{tag}"
+        name: "{NAME}"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        - containerPort: 443
+          protocol: TCP
+      terminationGracePeriodSeconds: 15
