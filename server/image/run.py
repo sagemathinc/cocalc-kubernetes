@@ -172,7 +172,7 @@ def start_compute():
 
 
 def start_nfs():
-    os.system('/root/start-nfs.sh')
+    os.system('/root/start-nfs.sh &')
 
 
 def tail_logs():
