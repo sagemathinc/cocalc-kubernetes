@@ -12,8 +12,10 @@ kubectl create serviceaccount cocalc-kubernetes-server
 
 2. Make the service account have some powers
 
+Replace `default` below by whatever namespace you are install CoCalc into:
+
 ```
-kubectl create rolebinding cocalc-kubernetes-server-binding --role=admin --serviceaccount=cocalc-kubernetes-server
+kubectl create rolebinding cocalc-kubernetes-server-binding --role=admin --serviceaccount=default:cocalc-kubernetes-server
 ```
 
 TODO: the account doesn't need admin for the namespace, but I haven't done something more precise yet...
@@ -21,7 +23,8 @@ TODO: the account doesn't need admin for the namespace, but I haven't done somet
 3. (Optional) Edit deployment.yaml so that the projects volume isn't ephemeral.
 
 If you don't do this step, your server will be completely ephemeral, and everything
-will be deleted when you stop it.
+will be deleted when you stop it.  It should still work fine, and is probably a good 
+idea for a first quick test.
 
 4.  Create the cocalc server deployment
 

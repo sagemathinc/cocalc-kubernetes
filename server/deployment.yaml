@@ -43,8 +43,6 @@ spec:
         volumeMounts:
         - mountPath: /projects
           name: projects
-      nodeSelector:
-        pre: 'false'
       serviceAccountName: cocalc-kubernetes-server
       terminationGracePeriodSeconds: 15
       volumes:
