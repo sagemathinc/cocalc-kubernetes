@@ -63,3 +63,29 @@ The only networking that project pods need are the cocalc-kubernetes-server
 must be able to connect to them via TCP on any port.  That's it.  It's also
 often convenient for users if they can connect from a project to the outside
 world.
+
+8. Forward the https port from CoCalc to your local computer, so that you can try it out in your web browser:
+
+```
+kubectl port-forward service/cocalc-kubernetes-server 4043:443
+```
+
+The above will make it so if you open https://localhost:4043 in your web browser,
+then you'll see your new cocalc-kubernetes server!  If port 4043 is already in 
+use on your machine, just choose a different port.
+
+If you're controlling kubectl via a remote machine, instead do
+
+```
+kubectl port-forward --address 0.0.0.0 service/cocalc-kubernetes-server 4043:443
+```
+
+then connect to https://ip.of.remote.machine:4043
+
+Of course this is less secure, and if your remote machine is behind a firewall, you
+will have to open up access to port 4043.
+
+9. Make your service publically visible
+
+How to do this may depend on how you're using Kubernetes.  You might
+start [here in the Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service).
