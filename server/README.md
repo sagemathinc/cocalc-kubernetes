@@ -40,3 +40,23 @@ kubectl expose deployment cocalc-kubernetes-server
 ```
 kubectl apply -f nfs-service.yaml
 ```
+
+7. Networking security for project pods
+
+**TODO!**
+
+It's critical for security that the project pods that cocalc-kubernetes-server creates
+are not allowed to connect to anything inside of your Kubernetes cluster.
+They will have the label
+```
+run: project
+```
+so you have to use Kubernetes networking control to make it so they can't
+connect to anything else...  If you don't do this, then things are not secure,
+since one project could connect to an HTTP server of another project, and
+do malicious things.
+
+The only networking that project pods need are the cocalc-kubernetes-server 
+must be able to connect to them via TCP on any port.  That's it.  It's also
+often convenient for users if they can connect from a project to the outside
+world.
