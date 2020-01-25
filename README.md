@@ -6,6 +6,14 @@ This is a free open source AGPL licensed slightly modified version of [cocalc-do
 
 See [server/README.md](./server/README.md) to get going!
 
+## LICENSE AND SUPPORT
+  - Much of this code is licensed [under the AGPL](https://en.wikipedia.org/wiki/Affero_General_Public_License). If you would instead like a business-friendly MIT license instead, please contact [help@cocalc.com](help@cocalc.com), and we will sell you a 1-year license for $1499.  This also includes some support, though with no guarantees (that costs more).
+  - Join the [CoCalc Docker mailing list](https://groups.google.com/a/sagemath.com/group/cocalc-docker/subscribe) for news, updates and more.
+  - [CoCalc mailing list](https://groups.google.com/forum/?fromgroups#!forum/cocalc) for general community support.
+
+## SECURITY STATUS
+  - If you setup everything as explaining  [server/README.md](./server/README.md), including appropriate network restrictions on the project pods, then there are no known security vulnerabilities.  In particular, this is much safer to run than [cocalc-docker](https://github.com/sagemathinc/cocalc-docker), if you are going to expose this to untrusted (or uncareful) users.
+
 ## Discussion
 
 cocalc-kubernetes is an open source (but AGPL) version of CoCalc that can be run on an existing generic Kubernetes cluster.
