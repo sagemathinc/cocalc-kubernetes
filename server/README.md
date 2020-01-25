@@ -105,6 +105,10 @@ then connect to https://ip.of.remote.machine:4043
 Of course this is less secure, and if your remote machine is behind a firewall, you
 will have to open up access to port 4043.
 
+**IMPORTANT:** If the cocalc-kubernetes-server-* pod is restarted, then the
+above port-forward stays running but is completely broken.  Hit control+c to
+exit out and then run it again.
+
 9. Make your service publically visible
 
 How to do this may depend on how you're using Kubernetes.  You might
