@@ -13,5 +13,4 @@ spec:
   - name: rpcbind
     port: 111
   selector:
-    run: "cocalc-kubernetes-server-nfs"
-    role: nfs-server
+    run: "cocalc-kubernetes-server"
