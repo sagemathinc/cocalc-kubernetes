@@ -1,0 +1,20 @@
+{
+  "display_name": "SageMath",
+  "argv": [
+    "sage",
+    "--python",
+    "-m",
+    "sage.repl.ipython_kernel",
+    "--matplotlib=inline",
+    "-f",
+    "{connection_file}"
+  ],
+  "language": "sagemath",
+  "metadata": {
+    "cocalc": {
+      "priority": 1,
+      "description": "Open-source mathematical software system",
+      "url": "https://www.sagemath.org/"
+    }
+  }
+}

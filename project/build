@@ -1,4 +1,0 @@
-set -ev
-cd image
-docker build -t cocalc-kubernetes-project .
-

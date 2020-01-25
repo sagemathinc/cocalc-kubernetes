@@ -2,30 +2,51 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "1"
-  generation: 2
+    deployment.kubernetes.io/revision: '1'
   labels:
-    run: "cocalc-server"
-  name: "cocalc-server"
+    run: cocalc-kubernetes-server
+  name: cocalc-kubernetes-server
 spec:
-  replicas: 1
   minReadySeconds: 30
+  replicas: 1
   selector:
     matchLabels:
-      run: "cocalc-server"
+      run: cocalc-kubernetes-server
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        run:  "cocalc-server"
+        run: cocalc-kubernetes-server
     spec:
       containers:
-      - image: "sagemathinc/cocalc-kubernetes-server:latest"
-        name: "cocalc-server"
+      - env:
+        - name: KUBERNETES_REGISTRY
+          value: sagemathinc
+        image: sagemathinc/cocalc-kubernetes-server:latest
+        name: cocalc-kubernetes-server
         ports:
         - containerPort: 80
+          name: http
           protocol: TCP
         - containerPort: 443
+          name: https
           protocol: TCP
+        - containerPort: 2049
+          name: nfs
+        - containerPort: 20048
+          name: mountd
+        - containerPort: 111
+          name: rpcbind
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /projects
+          name: projects
+      nodeSelector:
+        pre: 'false'
+      serviceAccountName: cocalc-kubernetes-server
       terminationGracePeriodSeconds: 15
+      volumes:
+      - emptyDir: {}
+        name: projects

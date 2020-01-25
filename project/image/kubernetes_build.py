@@ -8,7 +8,7 @@ def cmd(s, error=True):
     t = time.time()
     if os.system(s):
         if error:
-            raise RuntimeError("failed to run '%s'" % s)
+            raise RuntimeError("ERROR: failed to run '%s'" % s)
         else:
             print("WARNING: failed running '%s'" % s)
     print("Success running '{s}' -- ({time:0.1f} seconds)".format(
@@ -53,10 +53,8 @@ def build():
     ])
     if not os.path.exists('/cocalc/bin'):
         os.makedirs('/cocalc/bin')
-    cmd("pip install --system --prefix=/cocalc/ --upgrade /cocalc/src/smc_pyutil/"
-        )
-    cmd("pip install --system --prefix=/cocalc/ --upgrade /cocalc/src/smc_sagews/"
-        )
+    cmd("pip install --system --upgrade /cocalc/src/smc_pyutil/")
+    cmd("pip install --system --upgrade /cocalc/src/smc_sagews/")
 
 
 def coffee():
@@ -84,9 +82,10 @@ def main():
     fetch()
     checkout()
     build()
-    coffee()
     typescript()
-
+    coffee()
+    print("completely done")
+    os._exit(0)  # in case of some weird thread being stuck...
 
 if __name__ == '__main__':
     main()
