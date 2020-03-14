@@ -1,8 +1,28 @@
-# Server component of cocalc-kubernetes
+# Installation instructions.
 
-To get this working you have to following these steps:
+## Architecture
 
-## Installing the cocalc-server into a namespace in your Kubernetes cluster
+The architecture of cocalc-kubernetes is that there there is one 
+server deployment called `cocalc-kubernetes-server` that creates
+one pod that handles everything related to services.  There is
+also one pod for each running project, called `project-[project_id]`.
+When running, it might look like this:
+```
+~# kubectl get deployments
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+cocalc-kubernetes-server   1/1     1            1           29m
+~# kubectl get pods
+NAME                                           READY   STATUS    RESTARTS   AGE
+cocalc-kubernetes-server-854cbd774c-qchxm      1/1     Running   0          26m
+project-61897eab-8079-442c-aa66-6cb77d43c727   1/1     Running   0          15m
+project-f508f833-2e4d-46e3-bd03-4b67489a025c   1/1     Running   0          19m
+```
+
+To get CoCalc up and running, you have to install cocalc-kubernetes-server.
+It will then create projects for you. Also, all images are on DockerHub, so you
+don't have to build anything.
+
+## How to install the cocalc-kubernetes-server into a namespace in your Kubernetes cluster
 
 1. Create the service account called cocalc-kubernetes-server
 
@@ -85,7 +105,12 @@ then connect to https://ip.of.remote.machine:4043
 Of course this is less secure, and if your remote machine is behind a firewall, you
 will have to open up access to port 4043.
 
+**IMPORTANT:** If the cocalc-kubernetes-server-* pod is restarted, then the
+above port-forward stays running but is completely broken.  Hit control+c to
+exit out and then run it again.
+
 9. Make your service publically visible
 
 How to do this may depend on how you're using Kubernetes.  You might
 start [here in the Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service).
+
