@@ -113,4 +113,3 @@ exit out and then run it again.
 
 How to do this may depend on how you're using Kubernetes.  You might
 start [here in the Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service).
-
