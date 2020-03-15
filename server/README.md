@@ -35,10 +35,10 @@ kubectl create serviceaccount cocalc-kubernetes-server
 Replace `default` below by whatever namespace you are install CoCalc into:
 
 ```
-kubectl create rolebinding cocalc-kubernetes-server-binding --role=admin --serviceaccount=default:cocalc-kubernetes-server
+kubectl create rolebinding cocalc-kubernetes-server-binding --clusterrole=admin --serviceaccount=default:cocalc-kubernetes-server
 ```
 
-TODO: the account doesn't need admin for the namespace, but I haven't done something more precise yet...
+NOTE: See https://github.com/sagemathinc/cocalc-kubernetes/issues/4
 
 3. (Optional) Edit deployment.yaml so that the projects volume isn't ephemeral.
 
