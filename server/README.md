@@ -109,7 +109,24 @@ will have to open up access to port 4043.
 above port-forward stays running but is completely broken.  Hit control+c to
 exit out and then run it again.
 
-9. Make your service publically visible
+9. Make your service publicly visible
 
 How to do this may depend on how you're using Kubernetes.  You might
 start [here in the Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-the-service).
+
+10. Make an account an admin
+
+Once you create a new CoCalc account on your server, you can make it
+an admin user by finding the exact name of the `cocalc-kubernetes-server`
+pod, then get a bash shell in that pod, and finally run the
+`make-user-admin` command as illustrated:
+
+```
+$ kubectl get pods
+NAME                                           READY   STATUS    RESTARTS   AGE
+cocalc-kubernetes-server-6f77d89694-b4lzj      1/1     Running   0          5h46m
+project-a5c59442-671c-4b43-b667-84d32782f35c   1/1     Running   0          2m38s
+$ kubectl exec -it cocalc-kubernetes-server-6f77d89694-b4lzj bash
+root@cocalc-kubernetes-server-6f77d89694-b4lzj:/# make-user-admin wstein@gmail.com
+UPDATE 1
+```
