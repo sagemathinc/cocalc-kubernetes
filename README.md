@@ -2,6 +2,10 @@
 
 This is a free open source AGPL licensed slightly modified version of [cocalc-docker](https://github.com/sagemathinc/cocalc-docker), but for running CoCalc on a Kubernetes cluster.  There is one pod for the server and one pod for each project.
 
+## STATUS
+
+I've updated the images on DockerHub that this uses to the latest version of CoCalc as of **May 12, 2020**.
+
 ## Installation
 
 See [server/README.md](./server/README.md) to get going!
