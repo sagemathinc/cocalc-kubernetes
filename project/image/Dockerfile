@@ -17,13 +17,6 @@ RUN \
        apt-utils \
        wget \
        curl \
-       texlive \
-       texlive-latex-extra \
-       texlive-extra-utils \
-       texlive-xetex \
-       texlive-luatex \
-       texlive-bibtex-extra \
-       liblog-log4perl-perl \
        software-properties-common \
        texlive \
        texlive-latex-extra \
