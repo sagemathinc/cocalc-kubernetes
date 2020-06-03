@@ -129,14 +129,16 @@ RUN    adduser --quiet --shell /bin/bash --gecos "Sage user,101,," --disabled-pa
 
 # make source checkout target, then run the install script
 # see https://github.com/docker/docker/issues/9547 for the sync
-RUN    mkdir -p /usr/local/ \
-    && /tmp/scripts/install_sage.sh /usr/local/ master \
+# Sage can't be built as root, for reasons...
+# Here -E inherits the environment from root, however it's important to
+# include -H to set HOME=/home/sage, otherwise DOT_SAGE will not be set
+# correctly and the build will fail!
+RUN    mkdir -p /usr/local/sage \
+    && chown -R sage:sage /usr/local/sage \
+    && sudo -H -E -u sage /tmp/scripts/install_sage.sh /usr/local/ master \
     && sync
 
-RUN /tmp/scripts/post_install_sage.sh && rm -rf /tmp/* && sync
-
-# Install sage scripts system-wide
-RUN echo "install_scripts('/usr/local/bin/')" | sage
+RUN /tmp/scripts/post_install_sage.sh /usr/local/ && rm -rf /tmp/* && sync
 
 # Install SageTex
 RUN \
