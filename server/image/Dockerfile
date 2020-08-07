@@ -17,7 +17,7 @@ RUN \
      umask 022 && apt-get update \
   && apt-get install -y wget git make g++ dpkg-dev flex curl wget \
      bison libreadline-dev libz-dev libssl-dev \
-      python3-yaml  python-pip \
+      python3-yaml  python-pip python3-pip \
      libpq5 libpq-dev postgresql-client postgresql postgresql-contrib \
      haproxy \
      nginx \
