@@ -4,7 +4,9 @@ This is a free open source AGPL licensed slightly modified version of [cocalc-do
 
 ## STATUS
 
-I've updated the images on DockerHub that this uses to the latest version of CoCalc as of **May 12, 2020**.
+- As of Dec 2020, we have decided that **CoCalc-Kubernetes will not be supported further until there is at least one paying customer.**  We are a small company, and must choose very carefully how we spend our time.  So far nobody has purchased Cocalc-Kubernetes, wheeas many people have purchased [cocalc-docker](https://github.com/sagemathinc/cocalc-docker) licenses, so that's where our effort is going.
+
+- I've last updated the images on DockerHub that this uses to the latest version of CoCalc as of **May 12, 2020**.
 
 ## Installation
 
@@ -22,7 +24,7 @@ See [server/README.md](./server/README.md) to get going!
 
 ## Discussion
 
-cocalc-kubernetes is an open source (but AGPL) version of CoCalc that can be run on an existing generic Kubernetes cluster.
+cocalc-kubernetes is an open version of CoCalc that can be run on an existing generic Kubernetes cluster.
 
 It is as similar as possible to [cocalc-docker](https://github.com/sagemathinc/cocalc-docker), with the following changes:
   1. It runs in a Kubernetes cluster rather than a plain Docker install, and
