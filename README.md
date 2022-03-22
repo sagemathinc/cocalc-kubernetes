@@ -4,11 +4,9 @@ This is a free open source AGPL licensed slightly modified version of [cocalc-do
 
 ## STATUS
 
-- As of Dec 2020, we have decided that this **CoCalc-Kubernetes will not be supported further until there is at least one paying customer.**  We are a small company, and must choose very carefully how we spend our time. However, there are two options:
-   - [cocalc-docker](https://github.com/sagemathinc/cocalc-docker) for a small single node install
-   - a proprietary **HELM based kubernetes deployment**, which has certain service extensions, which were developed and battle-tested for the production site at cocalc.com
+- This is not currently being updated.
 
-- I've last updated the images on DockerHub that this uses to the latest version of CoCalc as of **May 12, 2020**.
+- We sell a **much** better scalable Kubernetes based version of CoCalc, but it's not open source. It contains some proprietary extensions we developed and battle tested for https://cocalc.com. It's based on flexible [HELM charts](https://helm.sh/) (a way to configure services in a kubernetes cluster) and it's currently working with GKE (Google Compute Engine's managed kubernetes cluster) and bare-metal Kubernetes clusters. It shouldn't be too hard to make it work on other Kubernetes clusters. The pricing is higher than [cocalc-docker](https://github.com/sagemathinc/cocalc-docker), depending on the installation and is proportional to the number of users.  Contact us at help@cocalc.com for more information.
 
 ## Installation
 
