@@ -4,7 +4,9 @@ This is a free open source AGPL licensed slightly modified version of [cocalc-do
 
 ## STATUS
 
-- As of Dec 2020, we have decided that **CoCalc-Kubernetes will not be supported further until there is at least one paying customer.**  We are a small company, and must choose very carefully how we spend our time.  So far nobody has purchased Cocalc-Kubernetes, wheeas many people have purchased [cocalc-docker](https://github.com/sagemathinc/cocalc-docker) licenses, so that's where our effort is going.
+- As of Dec 2020, we have decided that this **CoCalc-Kubernetes will not be supported further until there is at least one paying customer.**  We are a small company, and must choose very carefully how we spend our time. However, there are two options:
+   - [cocalc-docker](https://github.com/sagemathinc/cocalc-docker) for a small single node install
+   - a proprietary **HELM based kubernetes deployment**, which has certain service extensions, which were developed and battle-tested for the production site at cocalc.com
 
 - I've last updated the images on DockerHub that this uses to the latest version of CoCalc as of **May 12, 2020**.
 
