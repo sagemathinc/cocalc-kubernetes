@@ -1,6 +1,12 @@
+# **This is not currently being updated.**
+# See https://cocalc.com/pricing/onprem
+
+
+---
+
 # cocalc-kubernetes
 
-This is a free open source AGPL licensed slightly modified version of [cocalc-docker](https://github.com/sagemathinc/cocalc-docker), but for running CoCalc on a Kubernetes cluster.  There is one pod for the server and one pod for each project.
+This was a free open source AGPL licensed slightly modified version of [cocalc-docker](https://github.com/sagemathinc/cocalc-docker), but for running CoCalc on a Kubernetes cluster.  There is one pod for the server and one pod for each project.
 
 ## STATUS
 
